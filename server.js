@@ -31,9 +31,9 @@ app.use((req,res,next) =>{
 	next();
 });
 
-app.use((req,res,next)=>{
-	res.render('maintainence.hbs');
-});
+// app.use((req,res,next)=>{
+// 	res.render('maintainence.hbs');
+// });
 
 app.get('/', (req,res) => {
 
@@ -50,6 +50,10 @@ app.get('/about',(req,res) => {
 		pageTitle: 'About Page',
 	});
 
+});
+
+app.get('/reactiontester',(req,res)=>{
+	res.render('reactiontester.hbs');
 });
 
 app.listen(port,() => {

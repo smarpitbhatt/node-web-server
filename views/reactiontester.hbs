@@ -1,0 +1,108 @@
+<html>
+
+<head>
+
+<title>Reaction Game</title>
+
+<style type="text/css">
+
+body {
+  cursor:url(http://www.rw-designer.com/cursor-view/9386.gif), auto;
+  background-color: cyan;
+}
+
+#shape {
+  background-color: red;
+  height: 100px;
+  width:100px;
+  display:none;
+  position: relative;
+  border: 5px ;
+  border-style:ridge;
+  border-color: silver;
+
+}
+.text {
+  background-color:yellow;
+  width:200px;
+  text-align: center;
+  font-weight:bold;
+  font-style:italic;
+  position:relative;
+  top:20px;
+  left:100px;
+  border: 1px solid silver;
+}
+ h1 {
+   text-align: center;
+   color: red;
+   width:auto;
+   background-color: black;
+ }
+
+.pink :hover {
+  background-color: pink;
+}
+</style>
+
+<h1>Reaction Game</h1>
+
+</head>
+
+<body>
+  <a href="/about">ABOUT PAGE</a>  <a href="/">HOME PAGE</a>
+<p id="myTime" class="text">Your time:</p>
+<p id="high" class="text">High score:</p>
+<br><hr>
+<div id="shape" class="pink"></div>
+
+<script type="text/javascript">
+function getRandomColor() {
+
+    var letters = '0123456789ABCDEF'.split('');
+
+    var color = '#';
+
+    for (var i = 0; i < 6; i++ ) {
+
+        color += letters[Math.floor(Math.random() * 16)];
+
+    }
+    return color;
+}
+var start = new Date().getTime();
+var min=999999;
+function appear() {
+  var x=document.getElementById("shape").style;
+  x.top=Math.random()*300;
+  x.left=Math.random()*1000;
+
+if(Math.random()>0.5) {document.getElementById("shape").style.borderRadius = "50%";}
+else document.getElementById("shape").style.borderRadius=0;
+
+var size=100 + Math.random()*100;;
+  document.getElementById("shape").style.backgroundColor = getRandomColor();
+  document.getElementById("shape").style.width=size;
+  document.getElementById("shape").style.height=size;
+  document.getElementById("shape").style.display = "block";
+  start = new Date().getTime();
+}
+
+setTimeout(appear,1000);
+
+document.getElementById("shape").onclick = function() {
+  document.getElementById("shape").style.display = "none";
+  var end = new Date().getTime();
+
+  var timeTaken=end-start;
+  if(timeTaken<min) min=timeTaken;
+  document.getElementById("high").innerHTML ="High score: "+min/1000;
+  document.getElementById("myTime").innerHTML ="Your time: "+timeTaken/1000;
+  setTimeout(appear,700);
+}
+
+</script>
+
+</body>
+
+</html>
