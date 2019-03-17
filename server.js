@@ -52,7 +52,7 @@ app.get('/about',(req,res) => {
 
 });
 
-app.get('/reactiontester',(req,res)=>{
+app.get('/game',(req,res)=>{
 	res.render('reactiontester.hbs');
 });
 
